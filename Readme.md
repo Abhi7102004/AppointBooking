@@ -1,47 +1,131 @@
-College Appointment System Backend API
+# College Appointment System Backend API
 
-This project is a backend system for a college appointment management platform. It allows students to book appointments with professors, while professors can manage their availability and appointments. The system includes secure authentication and role-based access control.
+A robust backend system for managing college appointments between students and professors. This platform enables secure appointment scheduling with role-based access control and comprehensive appointment management features.
 
-#Features
-Authentication:
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-Students and professors can sign up, log in, and log out using JWT authentication.
-Passwords are securely hashed using bcrypt.
-Role-Based Functionality:
+## 📑 Table of Contents
 
-Students can book appointments with professors, view their requests, and cancel appointments.
-Professors can set their availability, view appointment requests, and respond to them (accept/reject).
-Appointment Management:
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Technology Stack](#technology-stack)
+- [Getting Started](#getting-started)
+- [API Documentation](#api-documentation)
+- [Database Schema](#database-schema)
+- [Testing](#testing)
+- [License](#license)
 
-Professors specify available slots.
-Students can book available slots for appointments.
-Appointment status transitions from pending to accepted/rejected.
-Data Integrity:
+## 🎯 Overview
 
-Relationships between users, availability, and appointments are maintained in MongoDB.
+The College Appointment System provides a secure and efficient platform for managing academic appointments. It features JWT-based authentication, role-specific functionalities, and comprehensive appointment management capabilities.
 
-#Tech Stack
-Backend Framework: Express.js
-Database: MongoDB
-Authentication: JWT and bcrypt
-Testing: E2E test cases with tools like Postman collections
+## ✨ Key Features
 
-Installation
-Clone the repository:
+### 🔐 Authentication & Security
+- Secure JWT-based authentication system
+- Role-based access control (Students/Professors)
+- Password encryption using bcrypt
+- Session management
 
-git clone <repository-url>
-cd college-appointment-system
-Install dependencies:
+### 👥 Role-Based Features
 
+#### Students Can:
+- Schedule appointments with professors
+- View and manage appointment requests
+- Cancel existing appointments
+- Track appointment status
+
+#### Professors Can:
+- Define available time slots
+- Review appointment requests
+- Accept or reject appointments
+- Manage their schedule
+
+### 📅 Appointment Management
+- Real-time slot availability
+- Automated status updates
+- Conflict prevention
+- Email notifications (coming soon)
+
+## 🛠 Technology Stack
+
+- **Runtime Environment**: Node.js
+- **Framework**: Express.js
+- **Database**: MongoDB
+- **Authentication**: JWT
+- **Security**: bcrypt
+- **Testing**: Postman Collections
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v14+ recommended)
+- MongoDB
+- npm or yarn
+
+### Installation
+
+1. **Clone the Repository**
+```bash
+git clone https://github.com/Abhi7102004/AppointBooking
+```
+
+2. **Install Dependencies**
+```bash
 npm install
-Set up environment variables in a .env file:
+```
 
-.env
+3. **Configure Environment**
+Create a `.env` file in the root directory:
+```env
 PORT=5000
 MONGO_URL=mongodb://127.0.0.1:27017/collegeAppointments
-JWT_SECRET=<your-secret-key>
-Start the server:
+JWT_SECRET=your_secure_secret_key
+```
 
-bash
-Copy code
-npm start
+4. **Start the Server**
+```bash
+npm run start
+```
+
+## 🔄 API Documentation
+
+### Authentication Endpoints
+
+| Method | Endpoint | Description | Role |
+|--------|----------|-------------|------|
+| POST | `/signup` | Register new user | All |
+| POST | `/login` | User authentication | All |
+| PUT | `/logout` | End user session | All |
+
+### Appointment Endpoints
+
+| Method | Endpoint | Description | Role |
+|--------|----------|-------------|------|
+| GET | `/appointment/pending-requests` | View pending appointments | Professor |
+| POST | `/appointment/book-slot` | Schedule new appointment | Student |
+| PUT | `/appointment/cancel-slot/:slotId` | Cancel appointment | Student |
+| POST | `/appointment/requests/:requestId/respond` | Accept/reject appointments | Professor |
+| GET | `/appointment/active-requests` | View active appointments | All |
+
+### Availability Endpoints
+
+| Method | Endpoint | Description | Role |
+|--------|----------|-------------|------|
+| POST | `/availability/add-slot` | Add available time slots | Professor |
+| GET | `/availability/check-availability/:professor` | View professor's availability
+
+
+### Test Coverage
+- Unit Tests: Controllers, Services, Models
+- Integration Tests: API Endpoints
+- E2E Tests: Complete User Flows
+
+
+## 🤝 Contributing
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
