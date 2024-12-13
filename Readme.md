@@ -12,9 +12,6 @@ A robust backend system for managing college appointments between students and p
 - [Technology Stack](#technology-stack)
 - [Getting Started](#getting-started)
 - [API Documentation](#api-documentation)
-- [Database Schema](#database-schema)
-- [Testing](#testing)
-- [License](#license)
 
 ## 🎯 Overview
 
